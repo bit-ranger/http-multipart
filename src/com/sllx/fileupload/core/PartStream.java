@@ -10,6 +10,7 @@ class PartStream implements Part{
     private String fieldName;
     private String fileName;
     private boolean isFormField;
+    private String characterEncoding;
 
     PartStream(String fieldName, InputStream input, String fileName) throws IOException {
         stream = new ByteArrayOutputStream();
@@ -45,6 +46,21 @@ class PartStream implements Part{
 
     @Override
     public String getValue() {
-        return stream.toString();
+        String value = null;
+        if(characterEncoding != null){
+            try {
+                value = stream.toString(characterEncoding);
+            } catch (UnsupportedEncodingException e) {
+                //若平台不知道指定的编码,将使用默认值
+                value = stream.toString();
+            }
+        } else {
+            value = stream.toString();
+        }
+        return value;
+    }
+
+    public void setCharacterEncoding(String characterEncoding) {
+        this.characterEncoding = characterEncoding;
     }
 }

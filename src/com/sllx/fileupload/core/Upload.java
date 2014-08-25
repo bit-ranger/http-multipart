@@ -13,7 +13,9 @@ public class Upload {
         ItemIterator iter = new ItemIterator(new RequestContext(request));
         while (iter.hasNext()){
             Item item = iter.next();
-            fileParts.add(new PartStream(item.getFieldName(), item.openStream(), item.getFileName()));
+            PartStream part = new PartStream(item.getFieldName(), item.openStream(), item.getFileName());
+            part.setCharacterEncoding(request.getCharacterEncoding());
+            fileParts.add(part);
         }
         fileParts.trimToSize();
         return fileParts;

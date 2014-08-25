@@ -102,6 +102,10 @@ class MultipartStream {
      */
     private String headerEncoding;
 
+    void setHeaderEncoding(String headerEncoding) {
+        this.headerEncoding = headerEncoding;
+    }
+
     /**
      * 记录器
      */

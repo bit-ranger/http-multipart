@@ -68,6 +68,7 @@ class ItemIterator{
         boundary = getBoundary(contentType);
         notifier = new MultipartStream.ProgressNotifier();
         multi = new MultipartStream(input, boundary, notifier);
+        multi.setHeaderEncoding(ctx.getCharacterEncoding());
         skipPreamble = true;
         findNextItem();
     }
