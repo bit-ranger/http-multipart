@@ -12,13 +12,14 @@ class PartStream implements Part{
     private boolean isFormField;
     private String characterEncoding;
 
-    PartStream(String fieldName, InputStream input, String fileName) throws IOException {
+    PartStream(String fieldName, InputStream input, String fileName, String encoding) throws IOException {
         stream = new ByteArrayOutputStream();
         //ByteArrayOutputStream#close() 什么都不做
         Streams.copy(input, stream, false);
         this.fieldName = fieldName;
         this.fileName = fileName;
         this.isFormField = fileName == null;
+        this.characterEncoding = encoding;
     }
 
     @Override
@@ -58,9 +59,5 @@ class PartStream implements Part{
             value = stream.toString();
         }
         return value;
-    }
-
-    public void setCharacterEncoding(String characterEncoding) {
-        this.characterEncoding = characterEncoding;
     }
 }

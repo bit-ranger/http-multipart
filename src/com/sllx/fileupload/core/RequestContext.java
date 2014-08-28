@@ -11,6 +11,8 @@ class RequestContext {
 
     private static final String CONTENT_LENGTH = "Content-length";
 
+    private static final String CHARACTER_ENCODING = "UTF-8";
+
     private final HttpServletRequest request;
 
     public RequestContext(HttpServletRequest request) {
@@ -18,7 +20,8 @@ class RequestContext {
     }
 
     public String getCharacterEncoding() {
-        return request.getCharacterEncoding();
+        String encoding = request.getCharacterEncoding();
+        return encoding == null ? CHARACTER_ENCODING : encoding;
     }
 
     public String getContentType() {
