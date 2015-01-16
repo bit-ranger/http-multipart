@@ -4,7 +4,7 @@ fileupload
 ##文件上传组件
 ###用法示例：
 
-<pre><code>
+```java
 public class Helloweb extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,   IOException {
         request.setCharacterEncoding("utf-8");
@@ -25,4 +25,4 @@ public class Helloweb extends HttpServlet {
         this.doPost(request, response);
     }
 }
-</code></pre>
+```
