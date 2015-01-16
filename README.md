@@ -6,7 +6,8 @@ fileupload
 
 ```java
 public class Helloweb extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,   IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException,   IOException {
         request.setCharacterEncoding("utf-8");
         List<Part> parts =  new Upload().parseRequest(request);
         for (Part part : parts) {
@@ -19,10 +20,6 @@ public class Helloweb extends HttpServlet {
                 part.write(new File("/home/sllx/tmp/" + part.getFileName()));
             }
         }
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request, response);
     }
 }
 ```
