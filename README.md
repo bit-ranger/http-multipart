@@ -1,8 +1,6 @@
 multipart
 ==========
 
-###功能
-
 将form表单发送的multipart/form-data解析为可以单独使用的Item
 
 用户将得到一个列表，列表中存放解析后的对象。
